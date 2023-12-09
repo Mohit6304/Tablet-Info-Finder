@@ -4,7 +4,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #fcfcfc;
 }
 
 .container {
@@ -19,7 +18,6 @@ body {
 
 .navbar {
   height: 60px;
-  background-color: #fef7e5;
   position: relative;
 }
 .blog{
@@ -105,7 +103,7 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 770px) {
   .menu-icon {
     display: block;
     cursor: pointer;
