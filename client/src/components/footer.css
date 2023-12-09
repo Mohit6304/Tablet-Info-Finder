@@ -1,0 +1,70 @@
+/* In your Footer.css file */
+
+.footer-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .content-divider {
+    width: 80%;
+    border: 1px solid #333; /* Darker contrast border */
+  }
+  .main-footer {
+    color: #333; /* Darker contrast text */
+    background-color: OldLace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensure items wrap to the next line if they exceed the container width */
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px; /* Adjust the value as needed */
+    margin-bottom: 20px; /* Add margin to the bottom for vertical spacing */
+  }
+  
+  h4 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .list-unstyled ,.list-unstyled a{
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .main-footer {
+      padding-top: 2em;
+    }
+  
+    .row {
+      flex-direction: column;
+    }
+  
+    .col {
+      margin-bottom: 1.5em;
+    }
+  }
+  
