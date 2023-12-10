@@ -15,6 +15,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-top: 10px;
+    border: 0.5px solid #ccc;
+    border-bottom: 0;
+    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.1);
   }
   
   .container {
