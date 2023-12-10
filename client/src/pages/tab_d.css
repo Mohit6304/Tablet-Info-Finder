@@ -1,0 +1,63 @@
+/* TabDetails.css */
+
+.tab-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .tab-details-heading {
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .edit-form {
+    margin-top: 20px;
+  }
+  
+  .details-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .details-value {
+    margin-bottom: 10px;
+  }
+  
+  .details-section {
+    margin-top: 20px;
+  }
+  
+  .save-button,
+  .cancel-button,
+  .modify-button,
+  .delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .save-button {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .cancel-button {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  .modify-button,
+  .delete-button {
+    background-color: #003c78;
+    color: #fff;
+  }
+  
+  .user-actions-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  

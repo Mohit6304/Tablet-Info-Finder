@@ -6,7 +6,9 @@
     height: auto;
     margin-block: 100px;
   }
-  
+  .link a{
+    text-decoration: none;
+  }
   .register-form {
     width: 300px;
     padding: 20px;

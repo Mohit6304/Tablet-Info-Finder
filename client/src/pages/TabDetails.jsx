@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { toast } from 'react-hot-toast';
+import './tab_d.css';
 
 const TabDetails = () => {
   const { user } = useContext(UserContext);
@@ -78,65 +79,75 @@ const TabDetails = () => {
   }
 
   return (
-    <div>
-      <h1>{tablet.name} Details</h1>
+    <div className="tab-details-container">
+      <h1 className="tab-details-heading">{tablet.name} Details</h1>
       {isEditing ? (
-        <div>
+        <div className="edit-form">
           {/* Form for editing tablet details */}
-          <label>Name:</label>
+          <label className="details-label">Name:</label>
           <input
             type="text"
             name="name"
             value={modifiedTablet.name}
             onChange={handleInputChange}
           />
-          <label>Active Ingredients:</label>
-            <input
-                type="text"
-                name="activeIngredients"
-                value={modifiedTablet.activeIngredients}
-                onChange={handleInputChange}
-            />
-            <label>Uses:</label>
-            <input
-                type="text"
-                name="uses"
-                value={modifiedTablet.uses}
-                onChange={handleInputChange}
-            />
-            <label>Side Effects:</label>
-            <input
-                type="text"
-                name="sideEffects"
-                value={modifiedTablet.sideEffects}
-                onChange={handleInputChange}
-            />
-            <label>Estimated Cost:</label>
-            <input
-                type="text"
-                name="estimatedCost"
-                value={modifiedTablet.estimatedCost}
-                onChange={handleInputChange}
-            />
-            
-          <button onClick={handleSaveModification}>Save</button>
-          <button onClick={handleCancelModification}>Cancel</button>
+          <label className="details-label">Active Ingredients:</label>
+          <input
+            type="text"
+            name="activeIngredients"
+            value={modifiedTablet.activeIngredients}
+            onChange={handleInputChange}
+          />
+          <label className="details-label">Uses:</label>
+          <input
+            type="text"
+            name="uses"
+            value={modifiedTablet.uses}
+            onChange={handleInputChange}
+          />
+          <label className="details-label">Side Effects:</label>
+          <input
+            type="text"
+            name="sideEffects"
+            value={modifiedTablet.sideEffects}
+            onChange={handleInputChange}
+          />
+          <label className="details-label">Estimated Cost:</label>
+          <input
+            type="text"
+            name="estimatedCost"
+            value={modifiedTablet.estimatedCost}
+            onChange={handleInputChange}
+          />
+
+          <button className="save-button" onClick={handleSaveModification}>
+            Save
+          </button>
+          <button className="cancel-button" onClick={handleCancelModification}>
+            Cancel
+          </button>
         </div>
       ) : (
-        <div>
+        <div className="details-section">
           {/* Display tablet details */}
-          <p>Active Ingredients: {tablet.activeIngredients}</p>
-          <p>Uses: {tablet.uses}</p>
-          <p>Side Effects: {tablet.sideEffects}</p>
-          <p>Estimated Cost: {tablet.estimatedCost}</p>
+          <p className="details-value">Active Ingredients: {tablet.activeIngredients}</p>
+          <p className="details-value">Uses: {tablet.uses}</p>
+          <p className="details-value">Side Effects: {tablet.sideEffects}</p>
+          <p className="details-value">Estimated Cost: {tablet.estimatedCost}</p>
         </div>
       )}
 
       {/* Buttons for modification and deletion */}
       {user && user.id === tablet.userId && (
-        <div>
-          {!isEditing && <button onClick={handleModify}>Modify</button>}
-          <button onClick={handleDelete}>Delete</button>
+        <div className="user-actions-container">
+          {!isEditing && (
+            <button className="modify-button" onClick={handleModify}>
+              Modify
+            </button>
+          )}
+          <button className="delete-button" onClick={handleDelete}>
+            Delete
+          </button>
         </div>
       )}
     </div>

@@ -14,6 +14,7 @@ import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
 import FOG from 'vanta/src/vanta.fog';
+import HALO from 'vanta/src/vanta.halo';
 import { useEffect } from 'react';
 
 axios.defaults.baseURL='http://localhost:8000'; 

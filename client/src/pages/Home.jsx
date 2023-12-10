@@ -1,8 +1,9 @@
 // import {useContext} from 'react'
 // import { UserContext } from '../../context/userContext';
 import './home.css'
-import logoImage from '../components/img/log.png';
 import { NavLink } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import animation from '../assets/pill.json';
 
 export default function Home() {
     // const {user}=useContext(UserContext);
@@ -16,7 +17,7 @@ export default function Home() {
                 <p><NavLink to="/tab"><button>Browse</button></NavLink></p>
             </div>
             <div className="hero-image">
-                <img src={logoImage} alt="Tablet Image" />
+                <Lottie animationData={animation}/>
             </div>
             </div>
 

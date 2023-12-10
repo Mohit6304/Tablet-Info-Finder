@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from 'axios';
 import {toast} from 'react-hot-toast';
-import {useNavigate} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 
 import './register.css';
 
@@ -63,6 +63,7 @@ export default function Register() {
                     value={data.password}
                     onChange={(e) => setData({ ...data, password: e.target.value })}
                 />
+                <p className="link">Already registered? <NavLink to="/login">Login</NavLink></p>
                 <button className="register-button" type="submit">Submit</button>
             </form>
         </div>

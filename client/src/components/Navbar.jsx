@@ -14,6 +14,10 @@ const Navbar = () => {
 
   const {user,logout}=useContext(UserContext);
 
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <nav className="navbar">
       <div className="container">
@@ -34,29 +38,21 @@ const Navbar = () => {
               <NavLink to="/tab">Tablet A-Z</NavLink>
             </li>
             <li>
-              <NavLink to="/reviews">Reviews</NavLink>
-            </li>
-            <li>
               <NavLink to="/about">About</NavLink>
             </li>
             <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
-            <b>
+            <b className='logout'>
               {user ? (
                 <>
-                  <span>{user.name} </span>
-                  <span onClick={logout}> Logout</span>
+                  <span>{capitalizeFirstLetter(user.name)}</span>
+                  <span onClick={logout}>:Logout</span>
                 </>
               ) : (
-                <NavLink to="/login">
-                  Login
-                </NavLink>
+                <NavLink to="/register">Login|Register</NavLink>
               )}
             </b>
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
           </ul>
         </div>
       </div>
