@@ -90,9 +90,15 @@ const getProfile = (req,res) => {
 }
 
 // logout user controller
-const logoutUser = (req,res) => {
-    res.clearCookie('token').json({message : 'Logout Successful'})
-}
+
+const logoutUser=(req,res)=>{
+  
+    res.clearCookie('token',{
+      sameSite:"none",
+      secure:true
+    }).status(200).json("User has been logged out.")
+  
+};
 
 module.exports = {
     test,

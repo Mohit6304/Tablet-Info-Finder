@@ -13,16 +13,13 @@ export function UserContextProvider({children}) {
                 
         }
     }, []);
-        /*const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1');
-    if (token) {
-      axios.get('/profile')
-        .then(({ data }) => setUser(data))
-        .catch(err => {
-          console.log(err);
-          setUser(null);
-        });*/
+
+    const logout = async () => {
+            await axios.post('/logout');
+            setUser(null);
+    }
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <UserContext.Provider value={{user, setUser ,logout}}>
             {children}
         </UserContext.Provider>
     )

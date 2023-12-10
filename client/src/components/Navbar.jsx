@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState , useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import './navbar.css';
 import logoImage from './img/logo.png';
 import ham from './img/menu.png';
+import { UserContext } from '../../context/userContext';
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -10,6 +11,8 @@ const Navbar = () => {
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
+
+  const {user,logout}=useContext(UserContext);
 
   return (
     <nav className="navbar">
@@ -39,9 +42,18 @@ const Navbar = () => {
             <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
+            <b>
+              {user ? (
+                <>
+                  <span>{user.name} </span>
+                  <span onClick={logout}> Logout</span>
+                </>
+              ) : (
+                <NavLink to="/login">
+                  Login
+                </NavLink>
+              )}
+            </b>
             <li>
               <NavLink to="/register">Register</NavLink>
             </li>
