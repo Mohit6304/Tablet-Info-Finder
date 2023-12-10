@@ -14,10 +14,29 @@ import {Toaster} from 'react-hot-toast';
 
 axios.defaults.baseURL='http://localhost:8000'; 
 axios.defaults.withCredentials=true;
+import FOG from 'vanta/src/vanta.fog';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(()=>{
+    FOG({
+      el:'#vanta',
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      highlightColor: 0xeddab1,
+      midtoneColor: 0xffffff,
+      lowlightColor: 0x382e93,
+      baseColor: 0xffffff,
+      speed: 1.50
+    })
+  },[])
   return (
     <>
+    <div className='bg' id='vanta'>
+      <div className='in'>
       <Navbar />
       <Toaster position="top-right" toastoptions={{duration : 2000}}  reverseOrder={false}/>
       <Routes>
@@ -30,6 +49,8 @@ function App() {
           <Route path="/register" element={<Register/>}/>
       </Routes>
       <Footer/>
+      </div>
+      </div>
     </>
   );
 }

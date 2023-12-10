@@ -9,9 +9,7 @@
     width: 80%;
     border: 1px solid #333; /* Darker contrast border */
   }
-  .main-footer {
-    color: #333; /* Darker contrast text */
-    background-color: OldLace;
+  .main-footer { /* Darker contrast text */
     display: flex;
     flex-direction: column;
     align-items: center;
