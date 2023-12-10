@@ -30,7 +30,7 @@ export default function Register() {
           } else {
             setData({ name: '', email: '', password: '' });
             toast.success(data.data.message);
-            navigate('/');
+            navigate('/login');
           }
         } catch (error) {
           console.log(error);

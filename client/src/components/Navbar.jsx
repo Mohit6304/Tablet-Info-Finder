@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import './navbar.css';
 import logoImage from './img/logo.png';
 import ham from './img/menu.png';
-import Button from './Button.jsx';
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);

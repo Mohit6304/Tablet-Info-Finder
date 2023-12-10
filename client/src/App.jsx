@@ -9,13 +9,15 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import axios from 'axios'
+import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
+import { UserContextProvider } from '../context/userContext';
+import FOG from 'vanta/src/vanta.fog';
+import { useEffect } from 'react';
 
 axios.defaults.baseURL='http://localhost:8000'; 
 axios.defaults.withCredentials=true;
-import FOG from 'vanta/src/vanta.fog';
-import { useEffect } from 'react';
+
 
 function App() {
   useEffect(()=>{
@@ -34,24 +36,25 @@ function App() {
     })
   },[])
   return (
-    <>
-    <div className='bg' id='vanta'>
-      <div className='in'>
-      <Navbar />
-      <Toaster position="top-right" toastoptions={{duration : 2000}}  reverseOrder={false}/>
-      <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/tab" element={<Tab />} />
-          <Route path="/contact" element={<Contact />}/>
-          <Route path="/reviews" element={<Reviews/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-      </Routes>
-      <Footer/>
+    <UserContextProvider>
+      <div className='bg' id='vanta'>
+        <div className='in'>
+          <Navbar />
+          <Toaster position="top-right" toastoptions={{duration : 2000}}  reverseOrder={false}/>
+          <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/tab" element={<Tab />} />
+              <Route path="/contact" element={<Contact />}/>
+              <Route path="/reviews" element={<Reviews/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/register" element={<Register/>}/>
+              
+          </Routes>
+          <Footer/>
+        </div>
       </div>
-      </div>
-    </>
+    </UserContextProvider>
   );
 }
 
