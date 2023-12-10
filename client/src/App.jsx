@@ -9,11 +9,17 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import axios from 'axios'
+import {Toaster} from 'react-hot-toast';
+
+axios.defaults.baseURL='http://localhost:8000'; 
+axios.defaults.withCredentials=true;
 
 function App() {
   return (
     <>
       <Navbar />
+      <Toaster position="top-right" toastoptions={{duration : 2000}}  reverseOrder={false}/>
       <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/tab" element={<Tab />} />
