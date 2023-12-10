@@ -3,6 +3,7 @@ import {Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Tab from './pages/Tab';
+import TabDetails from './pages/TabDetails';
 import Contact from './pages/Contact';
 import Reviews from './pages/Reviews';
 import About from './pages/About';
@@ -22,6 +23,7 @@ axios.defaults.withCredentials=true;
 function App() {
   useEffect(()=>{
     FOG({
+      
       el:'#vanta',
       mouseControls: true,
       touchControls: true,
@@ -32,7 +34,8 @@ function App() {
       midtoneColor: 0xffffff,
       lowlightColor: 0x382e93,
       baseColor: 0xffffff,
-      speed: 1.50
+      speed: 1.50,
+
     })
   },[])
   return (
@@ -49,7 +52,7 @@ function App() {
               <Route path="/about" element={<About/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/register" element={<Register/>}/>
-              
+              <Route path="/tablet/:id" element={<TabDetails/>}/>
           </Routes>
           <Footer/>
         </div>
