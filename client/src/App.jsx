@@ -22,21 +22,24 @@ axios.defaults.withCredentials=true;
 
 function App() {
   useEffect(()=>{
-    FOG({
+    const vantaEffect = FOG({
       
       el:'#vanta',
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
+      minHeight: 200,
+      minWidth: 200,
       highlightColor: 0xeddab1,
       midtoneColor: 0xffffff,
       lowlightColor: 0x382e93,
       baseColor: 0xffffff,
       speed: 1.50,
 
-    })
+    });
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
   },[])
   return (
     <UserContextProvider>

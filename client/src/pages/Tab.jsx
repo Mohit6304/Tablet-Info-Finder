@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
@@ -8,6 +8,7 @@ import './Tab.css';
 const Tab = () => {
   const { user } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('');
+  const [symptomSearchTerm, setSymptomSearchTerm] = useState('');
   const [tablets, setTablets] = useState([]);
   const [selectedTablet, setSelectedTablet] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
@@ -27,10 +28,17 @@ const Tab = () => {
       .catch((error) => console.error('Error fetching tablets:', error));
   }, []);
 
-  const handleSearch = () => {
-    // Implement search functionality if needed
-    // You can filter the tablets array based on the searchTerm
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
   };
+  const handleSymptomSearchChange = (event) => {
+    setSymptomSearchTerm(event.target.value);
+  };
+  
+  const filteredTablets = tablets.filter((tablet) =>
+  tablet.name.toLowerCase().includes(searchTerm.toLowerCase()) 
+  && tablet.uses.toLowerCase().includes(symptomSearchTerm.toLowerCase()) 
+  );
 
   const handleTabletSelect = (tablet) => {
     // Set the selected tablet for detailed view
@@ -76,19 +84,26 @@ const Tab = () => {
       <div className="search-container">
         <input
           type="text"
-          placeholder="Search Tablet"
+          placeholder="Search via Tablet Name"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearchChange}
           className="search-input"
         />
-        <button onClick={handleSearch} className="search-button">
+        <input
+          type="text"
+          placeholder="Search via Symptom"
+          value={symptomSearchTerm}
+          onChange={handleSymptomSearchChange}
+          className="search-input"
+        />
+        {/* <button onClick={handleSearch} className="search-button">
           Search
-        </button>
+        </button> */}
       </div>
 
       <div className="tablet-list-container">
         {/* Tablet List */}
-        {tablets.map((tablet) => (
+        {filteredTablets.map((tablet) => (
           <div key={tablet._id}>
             <Link
               to={`/tablet/${tablet._id}`}
