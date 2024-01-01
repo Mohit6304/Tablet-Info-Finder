@@ -32,9 +32,10 @@ const registerUser = async (req,res) => {
         const user = await UserModel.create({
             name, 
             email, 
-            password : hashedPassword
+            password : hashedPassword,
+            role: 'user'
         })
-        return res.json({message: 'Login Successful', user})
+        return res.json({message: 'Registration Successful', user})
     } catch (error) {
         console.log(error)
         return res.json({error: 'Something went wrong'})
@@ -64,7 +65,7 @@ const loginUser = async (req,res) => {
 
         // return user
         if (validPassword){
-            jwt.sign({ email : user.email, id : user._id, name : user.name},process.env.JWT_SECRET,{},(err,token)=>{
+            jwt.sign({ email : user.email, id : user._id, name : user.name , role: user.role},process.env.JWT_SECRET,{},(err,token)=>{
                 if(err) throw err;
                 res.cookie('token',token).json({message : 'Login Successful',user})
             })

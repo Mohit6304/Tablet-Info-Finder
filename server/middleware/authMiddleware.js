@@ -13,6 +13,10 @@ const authMiddleware = (req, res, next) => {
 
     // Attach the decoded user information to the request
     req.user = decoded;
+    
+    if (req.user && req.user.role === 'admin') {
+      req.isAdmin = true;
+    }
     next();
   } catch (error) {
     return res.status(403).json({ error: 'Unauthorized - Invalid token' });

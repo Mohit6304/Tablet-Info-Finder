@@ -12,6 +12,7 @@ const Tab = () => {
   const [tablets, setTablets] = useState([]);
   const [selectedTablet, setSelectedTablet] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
+  const isAdmin = user && user.role === 'admin';
   const [newTablet, setNewTablet] = useState({
     name: '',
     activeIngredients: '',
@@ -185,7 +186,7 @@ const Tab = () => {
         </div>
       )}
 
-      {!isAdding && user && (
+      {!isAdding && isAdmin &&(
         <div className="user-actions-container">
           {/* Add, Delete, Modify Tablet Buttons */}
           <button onClick={handleAddTablet} className="add-tablet-button">
