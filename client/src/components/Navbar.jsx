@@ -38,6 +38,9 @@ const Navbar = () => {
               <NavLink to="/tab">Tablet A-Z</NavLink>
             </li>
             <li>
+              <NavLink to="/api/ocr">OCR</NavLink>
+            </li>
+            <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
             <b className='logout'>

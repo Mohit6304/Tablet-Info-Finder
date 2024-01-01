@@ -13,6 +13,7 @@ const userSchema = new Schema({
         type: String,
         default: 'user', // Default role is user
     },
+    bookmarks: [{ type: Schema.Types.ObjectId, ref: 'tablet' }],
 
 })
 

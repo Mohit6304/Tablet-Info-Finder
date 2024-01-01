@@ -27,6 +27,12 @@ const tabletSchema = new mongoose.Schema(
       ref: 'user', // Updated to match the model name 'user'
       required: true,
     },
+    bookmarkedBy: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+      },
+    ],
   },
   { timestamps: true }
 );

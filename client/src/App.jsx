@@ -10,11 +10,13 @@ import About from './pages/About';
 import Footer from './components/Footer';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Ocr from './pages/Ocr';
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
 import FOG from 'vanta/src/vanta.fog';
 import { useEffect } from 'react';
+
 
 axios.defaults.baseURL='http://localhost:8000'; 
 axios.defaults.withCredentials=true;
@@ -55,6 +57,7 @@ function App() {
               <Route path="/about" element={<About/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/register" element={<Register/>}/>
+              <Route path="/api/ocr" element={<Ocr/>}/>
               <Route path="/tablet/:id" element={<TabDetails/>}/>
           </Routes>
           <Footer/>

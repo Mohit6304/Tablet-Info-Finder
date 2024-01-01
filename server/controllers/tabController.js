@@ -101,6 +101,62 @@ const updateTablet = async (req, res) => {
   });
 };
 
+const bookmarkTablet = async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ error: 'Not authenticated!' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, async (err, userInfo) => {
+    if (err) {
+      return res.status(403).json({ error: 'Token is not valid!' });
+    }
+
+    try {
+      const { tabletId } = req.params;
+
+      // Check if the tablet is already bookmarked by the user
+      const isBookmarked = await UserModel.exists({ _id: userInfo.id, bookmarks: tabletId });
+
+      if (isBookmarked) {
+        return res.json({ message: 'Tablet already bookmarked' });
+      }
+
+      // Add the tablet to the user's bookmarks
+      await UserModel.findByIdAndUpdate(userInfo.id, { $push: { bookmarks: tabletId } });
+
+      res.json({ message: 'Tablet bookmarked successfully' });
+    } catch (error) {
+      console.error('Error bookmarking tablet:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+};
+
+const unbookmarkTablet = async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ error: 'Not authenticated!' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, async (err, userInfo) => {
+    if (err) {
+      return res.status(403).json({ error: 'Token is not valid!' });
+    }
+
+    try {
+      const { tabletId } = req.params;
+
+      // Remove the tablet from the user's bookmarks
+      await UserModel.findByIdAndUpdate(userInfo.id, { $pull: { bookmarks: tabletId } });
+
+      res.json({ message: 'Tablet removed from bookmarks successfully' });
+    } catch (error) {
+      console.error('Error removing tablet from bookmarks:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+};
 
 module.exports = {
   getTablets,
@@ -108,4 +164,6 @@ module.exports = {
   addTablet,
   deleteTablet,
   updateTablet,
+  bookmarkTablet,
+  unbookmarkTablet,
 };
